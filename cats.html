@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- include js -->
+<script>
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /* Loop through a collection of all HTML elements: */
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /* Make an HTTP request using the attribute value as the file name: */
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /* Remove the attribute, and call this function once more: */
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /* Exit the function: */
+      return;
+    }
+  }
+}
+</script> 
+<head>
+	<title>Cat</title>  
+	<meta charset="UTF-8">  
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.1.12.4.min.js"></script>
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- put your css below this line -->
+	<link rel="stylesheet" type="text/css" href="css/general_style.css">
+	
+	<link rel="stylesheet" type="text/css" href="css/07-myhobbies-v2.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Srisakdi" rel="stylesheet"> 
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Srisakdi" rel="stylesheet"> 
+	<!-- social media  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		
+		img {			
+			margin-left:auto;
+			margin-right:auto;
+			width:100%;
+		}	
+		
+		.column {
+			line-height: 150%;
+			column-count: 2;
+			column-gap:100px;
+			color: white;
+		}
+	</style>
+	
+	
+</head>
+
+<body>
+
+	<!-- header inc -->
+	<div w3-include-html="inc/header.html"></div> 
+	
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h1>"Cat has nine lives"</h1>
+			  <img style="display:block;width:100%;border-radius:5px;"src="img/cats/cat1.jpg">
+			  <h2 style="border-style:ridge;border-radius:10px;background-color:white;color:#406BBA;width:30%;text-align:center;padding:10px;">Cat Domestication</h2>
+			  <p style="padding:5px;">It is relatively easy to train a dog to come to you when you call his name, but cats, as usual, are a different story. What is the difference?</p>
+			  <p style="padding:5px;">The evolutionary records show that dogs have been domesticated for around 30,000 years. Our ancestors domesticated dogs intentionally, breeding and raising dogs to obey the commands of their human masters, which is one reason many dog breeds are so easy to train today.</p>
+			  <p style="padding:5px;">Cats, on the other hand, domesticated us. About 10,000 years ago, the agricultural revolution caused some humans to abandon the hunter-gatherer lifestyle and instead stay in one place, raising food and storing it. The relationship between cats and humans began symbiotically, when both species realized it was mutually beneficial: The humans' food supply attracted rodents, and cats killed and ate rodents that were getting into the food supply. Win, win.</p>
+			  
+			  <img style="float:right;width:20%;"src="img/cats/catsymbol.png">
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+	
+	<div class="row" style="background-color:#406BBA;">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<br/>
+			<h2 style="border-color:#406BBA;border-radius:10px;background-color:white;color:#406BBA;width:40%;text-align:center;padding:10px;">Ignores  When Called...</h2>
+
+			<div class="column" style="padding:5px;">
+			<p>Most cat owners know the hopeless feeling of trying to call the name of their beloved pet, only to be ignored or, even worse, abandoned with a dismissive flick of the tail. An analysis of feline behaviour has found that cats really do know their names, it seems they just don’t care when you use them.</p>
+
+			<p>Atsuko Saito at Sophia University in Japan and her colleagues wanted to see if pet cats could distinguish between their own name and other similar-sounding words, even when a stranger called the name.</p>
+
+			<p>The team visited cat cafes, where the pets mingle with diners, and households and analysed the way the animals’ ears, heads, tails and feet moved in response to the sound of various words. With the owner out of sight, they played recordings of the owner saying four words with the same length and accent as their cat’s name, 15 seconds apart. This was followed by a recording of the cat’s name. </p>
+
+			<p>Most cat owners know the hopeless feeling of trying to call the name of their beloved pet, only to be ignored or, even worse, abandoned with a dismissive flick of the tail. An analysis of feline behaviour has found that cats really do know their names, it seems they just don’t care when you use them.</p>
+			<p style="text-align:right;"><em>–The New Scientist</em></p>
+			</div>
+
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+		
+	<div w3-include-html="inc/footer.html"></div> 
+	<script>
+		includeHTML();
+	</script>
+</body>
+</html>

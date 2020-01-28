@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- include js -->
+<script>
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /* Loop through a collection of all HTML elements: */
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /* Make an HTTP request using the attribute value as the file name: */
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /* Remove the attribute, and call this function once more: */
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /* Exit the function: */
+      return;
+    }
+  }
+}
+</script> 
+<head>
+	<title>Faculty</title>  
+	<meta charset="UTF-8">  
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.1.12.4.min.js"></script>
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- put your css below this line -->
+	
+	<!-- form template -->
+	<link rel="stylesheet" type="text/css" href="css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="css/ppp.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<!-- end form template -->
+
+	<link rel="stylesheet" type="text/css" href="css/general_style.css">
+	
+	
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Srisakdi" rel="stylesheet"> 
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Srisakdi" rel="stylesheet"> 
+	<!-- social media  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		img {			
+			margin-left:auto;
+			margin-right:auto;
+			width:100%;
+		}	
+		
+		table.faculty td{
+			width: 25%;
+			border: 1px solid #ddd
+			
+		}
+		
+		table.faculty tr:hover {
+			background-color: #ddd;
+		}
+		
+		table.faculty tr:nth-child(even){
+			background-color: #f2f2f2;
+		}
+	</style>
+	
+	
+</head>
+
+<body>
+
+	<!-- header inc -->
+	<div w3-include-html="inc/header.html"></div> 
+	
+	<div class="row">
+		<div class="col-md-1"></div>
+		
+		<div class="col-md-7">
+			<br/><br/>
+			<h2 style="border-style:ridge;border-color:#406BBA;border-radius:10px;background-color:white;color:#406BBA;width:40%;text-align:center;padding:0;;">Bird Scientific Names</h2>
+			<br/><br/>
+			<table class="faculty" style="width: 100%;">
+			
+					<tr>
+						<td>Common Name</td>
+						<td>Scientific Name</td>
+					</tr>
+					<tr>
+						<td>African Grey Parrot</td>
+						<td>Psittacus erithacus</td>
+					</tr>
+					
+					<tr>
+						<td>African Penguin</td>
+						<td>Spheniscus demersus</td>
+					</tr>
+					<tr>
+						<td>African Pygmy Falcon</td>
+						<td>Polihierax semitorquatus</td>
+					</tr>
+					<tr>
+						<td>African Pygmy-goose</td>
+						<td>Nettapus auritus</td>
+					</tr>
+					<tr>
+						<td>American Crow</td>
+						<td>Corvus brachrhynchus</td>
+					</tr>
+					<tr>
+						<td>American Flamingo</td>
+						<td>Phoenicopterus ruber</td>
+					</tr>
+					<tr>
+						<td>American Kestrel</td>
+						<td>Falco sparverius</td>
+					</tr>
+					<tr>
+						<td>Andean Condor</td>
+						<td>Vultur gryphus</td>
+					</tr>
+					<tr>
+						<td>Asian Fairy-bluebird</td>
+						<td>Irena puella</td>
+					</tr>
+					<tr>
+						<td>Augur Buzzard</td>
+						<td>Buteo rufofuscus</td>
+					</tr>
+					
+					
+				</table>
+			<br/><br/>
+			<div class="row">
+				<div class="col-md-4"><img style="width:150px;height:150px;object-fit:cover;border-radius:50%;"src="img/birds/bird1.jpg"></div>
+				<div class="col-md-4"><img style="width:150px;height:150px;object-fit:cover;border-radius:50%;"src="img/birds/bird2.jpg"></div>
+				<div class="col-md-4"><img style="width:150px;height:150px;object-fit:cover;border-radius:50%;"src="img/birds/bird3.jpg"></div>
+			</div>
+		</div>
+		
+		<div class="col-md-4">
+			<h2 class="w3-container w3-teal">animal inquiry</h2>
+			<form class="w3-container w3-card-4" method="post" action="14-contact-us.php">
+				<label for="Fname">First Name:</label>
+				<input class="w3-input" type="text" size="12" maxlength="12" name="Fname" placeholder="First Name" required><br/>
+				<label for="Lname">Last Name:</label>
+				<input class="w3-input" type="text" size="12" maxlength="36" name="Lname" placeholder="Last Name"><br/><br/>
+				<label for="email">E-Mail:</label>
+				<input class="w3-input" type="email" name="email" required><br/>
+				<label for="quote">Enter your message below:</label><br/>
+				<textarea style="width: 100%;"rows="10" cols="80" name="msgbox" wrap="physical"></textarea><br>
+				<button class="w3-button w3-section w3-teal w3-ripple" type="submit" value="Submit">Submit Email</button>
+				<button class="w3-button w3-section w3-teal w3-ripple" type="reset" value="Reset">Reset All Data</button>    
+			</form>  
+		</div>
+	</div>
+
+		
+		
+		
+	<div w3-include-html="inc/footer.html"></div> 
+	<script>
+		includeHTML();
+	</script>
+</body>
+</html>

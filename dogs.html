@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- include js -->
+<script>
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /* Loop through a collection of all HTML elements: */
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /* Make an HTTP request using the attribute value as the file name: */
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /* Remove the attribute, and call this function once more: */
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /* Exit the function: */
+      return;
+    }
+  }
+}
+</script> 
+<head>
+	<title>PPP Dog</title>  
+	<meta charset="UTF-8">  
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.1.12.4.min.js"></script>
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- put your css below this line -->	
+	<link rel="stylesheet" type="text/css" href="css/general_style.css">
+	
+	<link rel="stylesheet" type="text/css" href="css/07-myhobbies-v2.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Srisakdi" rel="stylesheet"> 
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Srisakdi" rel="stylesheet"> 
+	<!-- social media  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		img {			
+			margin-left:auto;
+			margin-right:auto;
+			width:100%;
+		}	
+		
+		.div1 {
+			background-color:#406BBA;
+			color:white;			
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- header inc -->
+	<div w3-include-html="inc/header.html"></div> 
+	
+	<div class="row div1">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h2 style="border-radius:10px;background-color:white;color:#406BBA;width:30%;text-align:center;padding:10px;">Dog Fun Fact</h2>
+			<iframe style="float:left;border-radius:5px;"width="560" height="315" src="https://www.youtube.com/embed/Pr68R_M5FVk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<p style="text-align:right;">Dogs can read facial expressions, communicate jealousy, display empathy, and even watch TV, studies have shown. They've picked up these people-like traits during their evolution from wolves to domesticated pets, which occurred between 11,000 and 16,000 years ago, experts say.</p>
+			<p style="text-align:right;">In particular, "paying attention to us, getting along with us, [and] tolerating us" has led to particular characteristics that often mirror ours, says Laurie Santos, director of the Yale Comparative Cognition Laboratory. (Read more about how dogs evolved in National Geographic magazine.)</p>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h2 style="border-style:ridge;border-color:#406BBA;border-radius:10px;background-color:white;color:#406BBA;width:40%;text-align:center;padding:10px;">Dog and Word</h2>
+			<img style="display:block;width:40%;float:right;border-radius:5px;" src="img/dogs/dogword.jpg">
+			<p>Dogs can learn words. One well-studied border collie named Rico knew 200 objects by name and, like a toddler, could infer the names of novel objects by excluding things with labels he already knew. Use facial expressions, gestures and possibly food treats while you talk. “Maintain eye contact,” Gallego-Abenza says. Research shows that even wolves are attuned to the attention of human faces and that dogs are particularly receptive to your gaze and pointing gestures. Scientists disagree about whether dogs are capable of full-blown empathy, but studies suggest canines feel at least a form of primitive empathy known as “emotional contagion.” In one study, dogs that heard recordings of infants crying experienced the same spike in cortisol levels and alertness as their human counterparts.</p>
+				
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+		
+	<!-- footer inc -->
+	<div w3-include-html="inc/footer.html"></div> 
+	<script>
+		includeHTML();
+	</script>
+</body>
+</html>

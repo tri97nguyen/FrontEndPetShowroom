@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- include js -->
+<script>
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /* Loop through a collection of all HTML elements: */
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /* Make an HTTP request using the attribute value as the file name: */
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /* Remove the attribute, and call this function once more: */
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /* Exit the function: */
+      return;
+    }
+  }
+}
+</script> 
+<head>
+	<title>Tri's Template Page</title>
+	<meta charset="UTF-8">
+		<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- put your css below this line -->
+ 
+	<link rel="stylesheet" type="text/css" href="css/general_style.css">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Srisakdi" rel="stylesheet"> 
+	<!-- social media  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+	<style>
+		
+		img {
+			width: 100%;
+			border-radius: 15px;
+		}
+	</style>
+</head>
+
+<body>
+
+		<!-- header inc -->
+	<div w3-include-html="inc/header.html"></div> 
+	
+	</br>
+		<h1 style="text-align: center;">Professionally</h1>
+	</br>
+	
+	<professionally>
+		<div class="row">
+			<div class="row" style="background-color:#B3E5FC;">
+			<div class="col-md-6"><h1 style="text-align:right;margin-top:25%;">Big Tech Dream Workplace</h1></div>
+			<div class="col-md-6"><img src="img/about_me_workplace_2.jpg" alt="about_me_workplace_2"></div>
+		</div>
+		
+		</div>
+		</br></br></br></br>
+		
+		<div class="row">
+			<div class="row" style="background-color:#B3E5FC;">
+			<div class="col-md-6" style="padding:4%;">
+				<h1 style="text-align:right;margin-top:25%;">Working towards</h1>
+				<p>Because CCSU not really have a dedicated data science program, I have to devise my own<p>
+				<p>Planned coursework</p>
+				<ul style="line-height:200%;">
+					<li>statistics and probability on MIT OCW</li>
+					<li>how to think like a computer scientist (python)</li>
+					<li>Specializations of Machine Learning, Deep learning on Coursera</li>
+					<li>Kaggle competition</li>
+				</ul>
+			</div>
+			<div class="col-md-6">
+				<img src="img/about_me_data_science.png" alt="about_me_data_science">
+			</div>
+		</div>
+		
+		
+	</professionally>
+	
+	<personally>
+	
+		</br>
+			<div class="row">
+				<div class="col-md-12" style="text-align: center;"><h1>Personal Life</h1></div>
+			</div>
+		</br>
+		
+		<div class="row" style="background-color:#B3E5FC;">
+			<div class="col-md-6"><img src="img/aboutme1.jpg" alt="aboutme1.jpg not available" ></div>
+			<div class="col-md-6"><img src="img/aboutme2.jpg" alt="aboutme2.jpg not available"></div>
+		</div>
+		
+		
+		
+		
+	</personally>
+	
+	
+	
+	<!-- footer inc -->
+	<div w3-include-html="inc/footer.html"></div> 
+	
+	<!-- execute include js -->
+	<script>
+		includeHTML();
+	</script>
+</body>
+</html>
